@@ -20,7 +20,7 @@
 </head>
 <body class="cbp-spmenu-push">
 	<nav  class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s4">
-			<h3>Επιλογές</h3>
+			<h3><img id="showBottom2" src="images\menu.png" alt="Menu" style="width: 1.5em;float: right; cursor: pointer;"></h3>
 			<a href="#">Βοήθεια από εδώ</a>
 			<a href="#">Σημεία Εξυπηρέτησης</a>
 			<a href="#">Προετοιμασία Ταξιδιού</a>
@@ -169,14 +169,20 @@
 				classie.toggle( menuBottom, 'cbp-spmenu-open' );
 				disableOther( 'showBottom' );
 			};
-			
+			showBottom2.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( menuBottom, 'cbp-spmenu-open' );
+				disableOther( 'showBottom' );
+			};
 
 			function disableOther( button ) {
 				
 				if( button !== 'showBottom' ) {
 					classie.toggle( showBottom, 'disabled' );
 				}
-				
+				if( button !== 'showBottom2' ) {
+					classie.toggle( showBottom, 'disabled' );
+				}
 			}
 			
 			
