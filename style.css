@@ -57,3 +57,7 @@ h4 {
 	background-color: #fff;
 	padding: 2em;
 }
+
+#geolocationapi{
+	cursor: pointer;
+}
