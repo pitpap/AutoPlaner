@@ -25,7 +25,7 @@
 			<a href="#">Σημεία Εξυπηρέτησης</a>
 			<a href="#">Προετοιμασία Ταξιδιού</a>
 			<a href="#">Συμβάντα</a>
-			<a href="#">Κίνηση</a>
+			<a href="#pagetraffic">Κίνηση</a>
 			<a href="#">Στοιχεία Θέσης μου</a>
 			<a href="#pagetwo">Λίστα επιλογών</a>
 		</nav>
@@ -157,6 +157,21 @@
 	    <h1>Auto Planer 2015</h1>
 	  </div>
 	</div>
+	
+	<div data-role="page" id="pagetraffic">
+	  <div data-role="header">
+	    <h1>Κίνηση στους Δρόμους</h1>
+	  </div>
+	
+	  <div data-role="main" class="ui-content">
+	    <iframe src="http://www.astynomia.gr/traffic-athens.php" style="width: 100%; height: 100%;"></iframe>
+	    <a href="#pageone">Επιστροφή στην αρχή</a>
+	  </div>
+	
+	  <div data-role="footer">
+	    <h1>Auto Planer 2015</h1>
+	  </div>
+	</div>
 	<!--<script src="flexgrid.javascript.js"></script>-->
 	<script src="js/classie.js"></script>
 		<script>
@@ -174,6 +189,11 @@
 				classie.toggle( menuBottom, 'cbp-spmenu-open' );
 				disableOther( 'showBottom' );
 			};
+			
+			trafficarea.onclick = function() {
+				$.mobile.changePage('#pagetraffic')
+			};
+			
 
 			function disableOther( button ) {
 				
