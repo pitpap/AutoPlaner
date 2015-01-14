@@ -58,6 +58,45 @@ h4 {
 	padding: 2em;
 }
 
+
+
 #geolocationapi{
+	cursor: pointer;
+}
+
+
+.inner
+{
+	margin: 0.5em;
+	box-shadow: 4px 4px 5px #888888;
+	border: 2px solid #47a3da;
+
+}
+
+#locationarea{
+	background-image: url("images/location.jpg") ;
+	background-size: 100%;
+	color:white;
+	cursor: pointer;
+}
+
+#categoriesarea{
+	background-image: url("images/categories.jpg") ;
+	background-size: 100%;
+	color:white;
+	cursor: pointer;
+}
+
+#alertsarea{
+	background-image: url("images/alert.jpg") ;
+	background-size: 100%;
+	color:white;
+	cursor: pointer;
+}
+
+#trafficarea{
+	background-image: url("images/traffic.jpg") ;
+	background-size: 100%;
+	color:white;
 	cursor: pointer;
 }
