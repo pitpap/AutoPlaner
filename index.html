@@ -9,6 +9,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic|Bitter' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="style.css"><link rel="stylesheet" type="text/css" href="css/default.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<link rel="stylesheet" href="//js.arcgis.com/3.13/esri/css/esri.css" />
 	<script src="js/modernizr.custom.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -153,8 +154,11 @@
 	    <h1>Λιστα Επιλογων Εφαρμογης</h1>
 	  </div>
 	
-	  <div data-role="main" class="ui-content">
-	  	<div id="positionform"></div>
+	  <div data-role="main" id="ui-map-page">
+	  	<!-- map content -->
+	    
+	      <div id="ui-map"></div>
+	       <div id="ui-dijit-locatebutton"></div>
 	    
 	  </div>
 	
@@ -180,7 +184,20 @@
 	</div>
 	<!--<script src="flexgrid.javascript.js"></script>-->
 	<script src="js/classie.js"></script>
+	<script src="//js.arcgis.com/3.13/"></script>
 		<script>
+		
+		
+		 var map;
+		  $.mobile.pagecontainer({defaults: true});
+		  $.mobile.pagecontainer({
+		    create: function (event, ui){
+		      console.log("create:", event.type);
+		      initializeEsriJS();
+		    }
+		  });
+		
+		
 		//http://tympanus.net/Development/OffCanvasMenuEffects/wave.html
 			var menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
 				body = document.body;
@@ -230,6 +247,124 @@ function UIpositionform(){
 	html += "";
 	$('#EditingTableArea').html(html);	
 }
+
+
+
+
+function initializeEsriJS(){
+    require([
+        "dojo/_base/array",
+        "dojo/dom-construct",
+        "dojo/on",
+        "dojo/parser",
+        "esri/arcgis/utils",
+        "esri/Color",
+        "esri/dijit/Geocoder",
+        "esri/dijit/HomeButton",
+        "esri/dijit/Legend",
+        "esri/dijit/LocateButton",
+        "esri/dijit/PopupMobile",
+        "esri/symbols/SimpleFillSymbol",
+        "esri/symbols/SimpleLineSymbol"
+      ],
+      function (array, domConstruct, on, parser, arcgisUtils, Color, Geocoder, HomeButton, Legend,
+        LocateButton, PopupMobile, SimpleFillSymbol, SimpleLineSymbol){
+        parser.parse();
+
+        var geocoder,
+            homeButton,
+            geoLocate,
+            legend,
+            currentItem,
+            arcgisURL = "http://www.arcgis.com/sharing/rest/content/items/",
+            urlObject;
+
+        urlObject = esri.urlToObject(document.location.href);
+        urlObject.query = urlObject.query || {};
+
+        // web map id
+        var webmap = urlObject.query.webmap || "1e79439598494713b553f990a4040886";
+
+        //create the map using the webmap id
+        // ----------------------------------------------------
+        // Create the symbology for the selected feature,
+        // when a Popup opens
+        // ----------------------------------------------------
+        var slsHighlightSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([38, 38, 38, 0.7]), 5);
+        var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL);
+        sfs.setOutline(slsHighlightSymbol);
+
+        var infoWindowPopup = new PopupMobile({fillSymbol: sfs}, domConstruct.create("div"));
+
+        //create a mobile popup
+        var mapDeferred = arcgisUtils.createMap(webmap, "ui-map", {
+          mapOptions: {
+            autoResize: false,
+            sliderOrientation: "horizontal",
+            sliderPosition: "top-left",
+            sliderStyle: "small",
+            infoWindow: infoWindowPopup,
+            maxZoom: 13
+          },
+          ignorePopups: false
+        });
+
+        mapDeferred.addCallback(function (response){
+          map = response.map;
+          currentItem = response.itemInfo;
+          $("#webmapTitle").html(currentItem.item.title);
+          
+
+          geoLocate = new LocateButton({
+            map: map
+          }, "ui-dijit-locatebutton");
+
+          homeButton = new HomeButton({
+            map: map
+          }, "ui-home-button-hidden");
+
+          var layerInfo = [];
+          array.forEach(currentItem.itemData.operationalLayers, function (layer){
+            if ((!layer.featureCollection) && (layer.layerObject)) {
+              layerInfo.push({
+                layer: layer.layerObject,
+                title: layer.title
+              });
+            }
+          });
+          legend = new Legend({
+            map: map,
+            layerInfos: layerInfo
+          }, "legendDiv");
+          legend.startup();
+
+          geoLocate.startup();
+          homeButton.startup();
+        });
+
+        /* remove hard coded img references in the MobilePopup */
+        on(infoWindowPopup, "show", function (event){
+          console.log("event", event);
+          if ($("*.esriMobileNavigationItem.left > img[src]")) {
+            $("*.esriMobileNavigationItem.left > img").removeAttr("src");
+          }
+          if ($("*.esriMobileNavigationItem.right > img[src]")) {
+            $("*.esriMobileNavigationItem.right > img").removeAttr("src");
+          }
+        });
+
+        /* remove hard coded img references in the MobilePopup */
+        on(infoWindowPopup, "selection-change", function (event){
+          if ($(".esriMobileNavigationItem.right1 > img[src]")) {
+            $(".esriMobileNavigationItem.right1 > img").removeAttr("src");
+          }
+          if ($(".esriMobileNavigationItem.right2 > img[src]")) {
+            $(".esriMobileNavigationItem.right2 > img").removeAttr("src");
+          }
+        });
+      }
+    );
+  }
 
 		</script>
 </body>
