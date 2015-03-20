@@ -21,13 +21,13 @@
 <body class="cbp-spmenu-push">
 	<nav  class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s4">
 			<h3><img id="showBottom2" src="images\menu.png" alt="Menu" style="width: 1.5em;float: right; cursor: pointer;"></h3>
-			<a href="#">Βοήθεια από εδώ</a>
-			<a href="#">Σημεία Εξυπηρέτησης</a>
-			<a href="#">Προετοιμασία Ταξιδιού</a>
-			<a href="#">Συμβάντα</a>
-			<a href="#pagetraffic" onclick="ToogleMenu();">Κίνηση</a>
-			<a href="#">Στοιχεία Θέσης μου</a>
-			<a href="#pagetwo">Λίστα επιλογών</a>
+			<a href="#">Βοηθεια από εδω</a>
+			<a href="#">Σημεια Εξυπηρετησης</a>
+			<a href="#">Προετοιμασια Ταξιδιου</a>
+			<a href="#">Συμβαντα</a>
+			<a href="#pagetraffic" onclick="ToogleMenu();">Κινηση</a>
+			<a href="#">Στοιχεια Θεσης μου</a>
+			<a href="#pagetwo">Λιστα επιλογων</a>
 		</nav>
 	<div  data-role="page" id="pageone" class="wrapper equal">
 	<h1><img id="showBottom" src="images\menu.png" alt="Menu" style="width: 1.5em;float: right; cursor: pointer;">Auto Planer</h1>
@@ -40,13 +40,13 @@
 				<article class="six">
 					<div id="locationarea" class="inner" title="βοήθεια από την θέση μου">
 						<img  src="images\location.png" alt="alert" style="width: 2.5em;float: right; cursor: pointer;">
-						<p class="d-size t-size">βοήθεια από την θέση μου</p>
+						<p class="d-size t-size">βοηθεια απο την θεση μου</p>
 					</div>
 				</article>
 				<article class="six">
 					<div id="categoriesarea" class="inner" title="Αναζήτηση με θεματικές κατηγορίες">
 						<img  src="images\categories.png" alt="alert" style="width: 2.5em;float: right; cursor: pointer;">
-						<p class="d-size t-size">αναζήτηση σημείων</p>
+						<p class="d-size t-size">αναζητηση σημειων</p>
 						<p class="d-size t-size"></p>
 					</div>
 				</article>
@@ -54,18 +54,19 @@
 				<article class="four">
 					<div id="trafficarea" class="inner">
 						<img  src="images\traffic.png" alt="alert" style="width: 2.5em;float: right; cursor: pointer;">
-						<p class="d-size t-size">κίνηση δρόμων</p>
+						<p class="d-size t-size">κινηση δρομων</p>
 					</div>
 				</article>
 				<article class="four">
-					<div class="inner">
-						<p class="d-size t-size"><a href="#pagetwo">Λίστα επιλογών</a></p>
+					<div id="mypositionarea" class="inner">
+						<img  src="images\position.png" alt="alert" style="width: 2.5em;float: right; cursor: pointer;">
+						<p class="d-size t-size"><a href="#pagetwo" style="color: black;">Πληροφοριες Θεσης</a></p>
 					</div>
 				</article>
 				<article class="four">
 					<div id="alertsarea" class="inner">
 						<img  src="images\alert.png" alt="alert" style="width: 2.5em;float: right; cursor: pointer;">
-						<p class="d-size t-size">ειδοποιήσεις</p>
+						<p class="d-size t-size">ειδοποιησεις</p>
 					</div>
 				</article>
 				<article class="d-2 t-3 m-4 c-6 ">
@@ -148,12 +149,13 @@
 	
 	<div data-role="page" id="pagetwo">
 	  <div data-role="header">
-	  	<a href="#pageone" style="float: left;">Επιστροφή στην αρχή</a>
-	    <h1>Λίστα Επιλογών Εφαρμογής</h1>
+	  	<a href="#pageone" style="float: left;">Επιστροφη στην αρχη</a>
+	    <h1>Λιστα Επιλογων Εφαρμογης</h1>
 	  </div>
 	
 	  <div data-role="main" class="ui-content">
-	    <p>Από εδώ μπορείτε να διαμορφώσετε τις επιλογές σας σχετικά με την εφαρμογή Auto Planer.</p>
+	  	<div id="positionform"></div>
+	    
 	  </div>
 	
 	  <div data-role="footer">
@@ -163,8 +165,8 @@
 	
 	<div data-role="page" id="pagetraffic">
 	  <div data-role="header">
-	  	<a href="#pageone" style="float: left;">Επιστροφή στην αρχή</a>
-	    <h1>Κίνηση στους Δρόμους</h1>
+	  	<a href="#pageone" style="float: left;">Επιστροφη στην αρχη</a>
+	    <h1>Κινηση στους Δρομους</h1>
 	  </div>
 	
 	  <div data-role="main" class="ui-content">
@@ -220,6 +222,15 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;	
 }
+
+
+///UI functions -------------------------------------------------------
+function UIpositionform(){
+	var html = "";
+	html += "";
+	$('#EditingTableArea').html(html);	
+}
+
 		</script>
 </body>
 </html>
