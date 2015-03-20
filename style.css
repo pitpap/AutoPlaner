@@ -1,0 +1,109 @@
+
+@media screen and (min-width: 961px) {
+	.d-size {font-weight: bold; font-size: 1.2em;}
+}
+
+@media screen and (min-width: 641px) and (max-width: 960px) {
+	.t-size {font-weight: bold; font-size: 1.2em;}
+}
+
+@media screen and (max-width: 640px) {
+	.m-size {font-weight: bold; font-size: 1.2em;}
+}
+
+@media screen and (max-width: 480px) {
+	.c-size {font-weight: bold; font-size: 1.2em;}
+}
+
+
+.inner {
+	margin: 1em;
+	padding: 1em;
+	border: 1px solid rgba(71, 163, 218, 0.49);
+	border-radius: 0.2em;
+}
+
+.borderless {
+	border: none;
+	margin: 0.3em;
+	padding: 0.3em;
+}
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	background-color: #47a3da;
+	line-height: 1.75em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Bitter', serif;
+	color: #3cf;
+	line-height: 1.5em;
+}
+
+h2,
+h3,
+h4 {
+	margin-top: 2em;
+}
+
+.wrapper {
+	max-width: 960px;
+	background-color: #fff;
+	padding: 2em;
+}
+
+
+
+#geolocationapi{
+	cursor: pointer;
+}
+
+
+.inner
+{
+	margin: 0.5em;
+	box-shadow: 4px 4px 5px #888888;
+	border: 1px solid rgba(71, 163, 218, 0.49);
+
+}
+
+#locationarea{
+	/*background-image: url("images/location.jpg") ;
+	background-size: 100%;*/
+	color:red;
+	cursor: pointer;
+	text-align: center;
+}
+
+#categoriesarea{
+	/*background-image: url("images/categories.jpg") ;
+	background-size: 100%;*/
+	  color: rgba(95, 158, 160, 0.93);
+	cursor: pointer;
+	text-align: center;
+	  background-color: rgba(220, 220, 220, 0.77);
+}
+
+#alertsarea{
+	/*background-image: url("images/alert.jpg") ;
+	background-size: 100%;*/
+	color:rgba(72, 61, 139, 0.96);
+	cursor: pointer;
+	background-color: rgba(237, 121, 100, 0.76);
+	text-align: center;
+}
+
+#trafficarea{
+	/*background-image: url("images/traffic.jpg") ;
+	background-size: 100%;*/
+	color:orange;
+	cursor: pointer;
+	text-align: center;
+	background-color: rgba(85, 107, 47, 0.78);
+}
