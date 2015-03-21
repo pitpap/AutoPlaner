@@ -3,18 +3,18 @@
 	<title>AutoPlaner</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/flexgrid/1.4.1/flexgrid.min.css">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" type="text/css" href="CDN/flexgrid.min.css">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="flexgrid.css"> -->
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic|Bitter' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="style.css"><link rel="stylesheet" type="text/css" href="css/default.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
 	<link rel="stylesheet" href="//js.arcgis.com/3.13/esri/css/esri.css" />
 	<script src="js/modernizr.custom.js"></script>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script src="http://cdn.jsdelivr.net/flexgrid/1.4.1/flexgrid.min.js"></script>
-
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="CDN/flexgrid.min.js"></script>
+	
 	<style type="text/css">
 		
 	</style>
@@ -218,6 +218,7 @@
 		    create: function (event, ui){
 		      console.log("create:", event.type);
 		      app.initialize();
+		      initializeEsriJS();
 		    }
 		  });
 		
@@ -277,6 +278,7 @@ function UIpositionform(){
 
 
 function initializeEsriJS(){
+	console.log("innnnnn")
     require([
         "dojo/_base/array",
         "dojo/dom-construct",
