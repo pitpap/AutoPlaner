@@ -161,12 +161,18 @@
 	       <div id="ui-dijit-locatebutton"></div>
 	    
 	  </div>
-	
+
 	  <div data-role="footer">
 	    <h1>Auto Planer 2015</h1>
 	  </div>
 	</div>
 	
+	<script type="text/javascript">
+	        $( '#pagetwo' ).on( 'pageinit',function(event){
+	            jqueryInit();
+	        });
+	    </script>
+	    
 	<div data-role="page" id="pagetraffic">
 	  <div data-role="header">
 	  	<a href="#pageone" style="float: left;">Επιστροφη στην αρχη</a>
@@ -183,47 +189,13 @@
 	  </div>
 	</div>
 	<!--<script src="flexgrid.javascript.js"></script>-->
+	<script src="src/jQueryHelper.js"></script>
 	<script src="js/classie.js"></script>
 	<script src="//js.arcgis.com/3.13/"></script>
 		<script>
 		
-		var app = {
-        // Application Constructor
-        initialize: function() {
-            this.bindEvents();
-        },
-        // Bind Event Listeners
-        //
-        // Bind any events that are required on startup. Common events are:
-        // 'load', 'deviceready', 'offline', and 'online'.
-        bindEvents: function() {
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-        },
-        // deviceready Event Handler
-        //
-        // The scope of 'this' is the event. In order to call the 'receivedEvent'
-        // function, we must explicity call 'app.receivedEvent(...);'
-        onDeviceReady: function() {
-            app.receivedEvent('deviceready');
-        },
-        // Update DOM on a Received Event
-        receivedEvent: function(id) {
-            console.log('Cordova device ready event: ' + id);
-            initializeEsriJS();
-        }
-    };
-		 var map;
-		  $.mobile.pagecontainer({defaults: true});
-		  $.mobile.pagecontainer({
-		    create: function (event, ui){
-		      console.log("create:", event.type);
-		      app.initialize();
-		      initializeEsriJS();
-		    }
-		  });
 		
-    
-		
+		 		
 		//http://tympanus.net/Development/OffCanvasMenuEffects/wave.html
 			var menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
 				body = document.body;
@@ -277,121 +249,61 @@ function UIpositionform(){
 
 
 
-function initializeEsriJS(){
-	console.log("innnnnn")
-    require([
-        "dojo/_base/array",
-        "dojo/dom-construct",
-        "dojo/on",
-        "dojo/parser",
-        "esri/arcgis/utils",
-        "esri/Color",
-        "esri/dijit/Geocoder",
-        "esri/dijit/HomeButton",
-        "esri/dijit/Legend",
-        "esri/dijit/LocateButton",
-        "esri/dijit/PopupMobile",
-        "esri/symbols/SimpleFillSymbol",
-        "esri/symbols/SimpleLineSymbol"
-      ],
-      function (array, domConstruct, on, parser, arcgisUtils, Color, Geocoder, HomeButton, Legend,
-        LocateButton, PopupMobile, SimpleFillSymbol, SimpleLineSymbol){
-        parser.parse();
-
-        var geocoder,
-            homeButton,
-            geoLocate,
-            legend,
-            currentItem,
-            arcgisURL = "http://www.arcgis.com/sharing/rest/content/items/",
-            urlObject;
-
-        urlObject = esri.urlToObject(document.location.href);
-        urlObject.query = urlObject.query || {};
-
-        // web map id
-        var webmap = urlObject.query.webmap || "1e79439598494713b553f990a4040886";
-
-        //create the map using the webmap id
-        // ----------------------------------------------------
-        // Create the symbology for the selected feature,
-        // when a Popup opens
-        // ----------------------------------------------------
-        var slsHighlightSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([38, 38, 38, 0.7]), 5);
-        var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_NULL);
-        sfs.setOutline(slsHighlightSymbol);
-
-        var infoWindowPopup = new PopupMobile({fillSymbol: sfs}, domConstruct.create("div"));
-
-        //create a mobile popup
-        var mapDeferred = arcgisUtils.createMap(webmap, "ui-map", {
-          mapOptions: {
-            autoResize: false,
-            sliderOrientation: "horizontal",
-            sliderPosition: "top-left",
-            sliderStyle: "small",
-            infoWindow: infoWindowPopup,
-            maxZoom: 13
-          },
-          ignorePopups: false
-        });
-
-        mapDeferred.addCallback(function (response){
-          map = response.map;
-          currentItem = response.itemInfo;
-          $("#webmapTitle").html(currentItem.item.title);
-          
-
-          geoLocate = new LocateButton({
-            map: map
-          }, "ui-dijit-locatebutton");
-
-          homeButton = new HomeButton({
-            map: map
-          }, "ui-home-button-hidden");
-
-          var layerInfo = [];
-          array.forEach(currentItem.itemData.operationalLayers, function (layer){
-            if ((!layer.featureCollection) && (layer.layerObject)) {
-              layerInfo.push({
-                layer: layer.layerObject,
-                title: layer.title
-              });
-            }
-          });
-          legend = new Legend({
-            map: map,
-            layerInfos: layerInfo
-          }, "legendDiv");
-          legend.startup();
-
-          geoLocate.startup();
-          homeButton.startup();
-        });
-
-        /* remove hard coded img references in the MobilePopup */
-        on(infoWindowPopup, "show", function (event){
-          console.log("event", event);
-          if ($("*.esriMobileNavigationItem.left > img[src]")) {
-            $("*.esriMobileNavigationItem.left > img").removeAttr("src");
-          }
-          if ($("*.esriMobileNavigationItem.right > img[src]")) {
-            $("*.esriMobileNavigationItem.right > img").removeAttr("src");
-          }
-        });
-
-        /* remove hard coded img references in the MobilePopup */
-        on(infoWindowPopup, "selection-change", function (event){
-          if ($(".esriMobileNavigationItem.right1 > img[src]")) {
-            $(".esriMobileNavigationItem.right1 > img").removeAttr("src");
-          }
-          if ($(".esriMobileNavigationItem.right2 > img[src]")) {
-            $(".esriMobileNavigationItem.right2 > img").removeAttr("src");
-          }
-        });
-      }
-    );
-  }
+var map;
+        function jqueryInit(){
+            require(["esri/map","esri/symbols/PictureMarkerSymbol","dojo/on","dojo/domReady!"],
+                function(Map,PictureMarkerSymbol,on) {
+                    var helper = null;
+                    // Create map
+                    map = new Map("ui-map",{
+                        basemap: "streets",
+                        center: [23,39],
+                        zoom: 4
+                    });
+                    // Wait until map has loaded before starting geolocation
+                    map.on("load",init);
+                    // Create the marker symbol
+                    var markerSymbol = new PictureMarkerSymbol({
+                        "angle":0,
+                        "xoffset":0,
+                        "yoffset":0,
+                        "type":"esriPMS",
+                        "url":"images/green-pin.png",
+                        "width":35,
+                        "height":35
+                    })
+                    function init(){
+                        try{
+                            helper = new jQueryHelper(map);
+                        }
+                        catch(err) {
+                            console.log("Unable to initialize jQueryHelper: " + err.message);
+                        }
+                        map.reposition();
+                        map.resize();
+                        startGeolocation();
+                    }
+                    function startGeolocation(){
+                        navigator.geolocation.getCurrentPosition(locationSuccess,locationError,{setHighAccuracy:true});
+                    }
+                    // Handle location success
+                    function locationSuccess(position){
+                        if(position.coords.latitude != null || position.coords.longitude != null){
+                            console.log("ps " + position.coords.longitude + ", " + position.coords.latitude)
+                            var wgsPt = new esri.geometry.Point(position.coords.longitude,position.coords.latitude);
+                            map.graphics.add(new esri.Graphic(wgsPt, markerSymbol));
+                            map.centerAndZoom(wgsPt,9);
+                            //Set jQueryHelper properties
+                            helper.setCenterPt(position.coords.latitude,position.coords.longitude,4326);
+                            helper.setZoom(9);
+                        }
+                    }
+                    function locationError(err){
+                        console.log("locationError: " + err.message);
+                    }
+                }
+            );
+        }
 
 		</script>
 </body>
