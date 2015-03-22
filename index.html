@@ -268,9 +268,9 @@ var map;
                         "xoffset":0,
                         "yoffset":0,
                         "type":"esriPMS",
-                        "url":"images/green-pin.png",
-                        "width":35,
-                        "height":35
+                        "url":"images/bluepoint-21x29.png",
+                        "width":18,
+                        "height":26
                     })
                     function init(){
                         try{
@@ -292,7 +292,7 @@ var map;
                             console.log("ps " + position.coords.longitude + ", " + position.coords.latitude)
                             var wgsPt = new esri.geometry.Point(position.coords.longitude,position.coords.latitude);
                             map.graphics.add(new esri.Graphic(wgsPt, markerSymbol));
-                            map.centerAndZoom(wgsPt,9);
+                            map.centerAndZoom(wgsPt,12);
                             //Set jQueryHelper properties
                             helper.setCenterPt(position.coords.latitude,position.coords.longitude,4326);
                             helper.setZoom(9);
