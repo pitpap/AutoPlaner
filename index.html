@@ -28,7 +28,7 @@
 			<a href="#">Συμβαντα</a>
 			<a href="#pagetraffic" onclick="ToogleMenu();">Κινηση</a>
 			<a href="#">Στοιχεια Θεσης μου</a>
-			<a href="#pagetwo">Λιστα επιλογων</a>
+			<a href="#pagetwo" onclick="ToogleMenu();">Λιστα επιλογων</a>
 		</nav>
 	<div  data-role="page" id="pageone" class="wrapper equal">
 	<h1><img id="showBottom" src="images\menu.png" alt="Menu" style="width: 1.5em;float: right; cursor: pointer;">Auto Planer</h1>
@@ -172,6 +172,12 @@
 	        	//alert("ewrwer")
 	            jqueryInit();
 	        });
+	        $(document).on("pageshow","#pagetwo",function(){
+			  $('#ui-map').width('100%')
+				$('#ui-map').height('94%')
+				map.reposition();
+                        map.resize();
+			});
 	    </script>
 	    
 	<div data-role="page" id="pagetraffic">
@@ -193,7 +199,7 @@
 	<script src="src/jQueryHelper.js"></script>
 	<script src="js/classie.js"></script>
 	<script src="http://js.arcgis.com/3.13/"></script>
-		<script>
+	<script>
 		
 		
 		 		
@@ -219,6 +225,7 @@
 			};
 			
 			function ToogleMenu(){
+				
 				setTimeout(function(){
 						 classie.toggle( menuBottom, 'cbp-spmenu-open' );
 						 }, 1000);
@@ -253,7 +260,7 @@ var map;
                     var helper = null;
                     // Create map
                     map = new Map("ui-map",{
-                        basemap: "streets",
+                        basemap: "gray",
                         center: [23,39],
                         zoom: 4
                     });
