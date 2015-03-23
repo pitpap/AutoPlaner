@@ -172,12 +172,7 @@
 	        	//alert("ewrwer")
 	            jqueryInit();
 	        });
-	        $(document).on("pageshow","#pagetwo",function(){
-			  $('#ui-map').width('100%')
-				$('#ui-map').height('94%')
-				map.reposition();
-                map.resize();
-			});
+	       
 	    </script>
 	    
 	<div data-role="page" id="pagetraffic">
@@ -262,7 +257,8 @@ var map;
                     map = new Map("ui-map",{
                         basemap: "gray",
                         center: [23,39],
-                        zoom: 4
+                        zoom: 4,
+                        sliderPosition: "bottom-left"
                     });
                     // Wait until map has loaded before starting geolocation
                     map.on("load",init);
@@ -283,6 +279,8 @@ var map;
                         catch(err) {
                             console.log("Unable to initialize jQueryHelper: " + err.message);
                         }
+                        $('#ui-map').width('100%');
+						$('#ui-map').height('94%');
                         map.reposition();
                         map.resize();
                         startGeolocation();
@@ -305,6 +303,16 @@ var map;
                     function locationError(err){
                         console.log("locationError: " + err.message);
                     }
+                     $(document).on("pageshow","#pagetwo",function(){
+					  $('#ui-map').width('100%');
+						$('#ui-map').height('94%');
+						map.reposition();
+		                map.resize();
+		                startGeolocation();
+					});
+                    
+                    
+                    
                 }
             );
         }
