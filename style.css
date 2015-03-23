@@ -5,6 +5,15 @@
     padding: 0;
   }
   
+   #ui-map {
+            position: absolute;
+            background-color: #EEEEDD;
+            height: 100%;
+            width: 100%;
+            padding: 0px;
+            z-index: 0;
+            left: 0px;
+        }
 /* LocateButton dijit */
 
   .LocateButton .zoomLocateButton {
