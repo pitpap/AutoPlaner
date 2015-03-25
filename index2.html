@@ -3,10 +3,9 @@
 	<title>AutoPlaner</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	
-	<link rel="stylesheet" href="css/metro-style.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="CDN/flexgrid.min.css">
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="flexgrid.css"> -->
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic|Bitter' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="style.css"><link rel="stylesheet" type="text/css" href="css/default.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
@@ -14,161 +13,32 @@
 	<script src="js/modernizr.custom.js"></script>
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
-	<script src="js/freewall.js"></script>
+	<script src="js/jquery.flip.js"></script>
+	<script src="CDN/flexgrid.min.js"></script>
 	
 	<style type="text/css">
 		
 	</style>
 </head>
-<body>
-	<img id="showBottom" src="images\menu.png" alt="Menu" style="width: 1.5em; position:absolute; top: 25px;right:25px; cursor: pointer;">
-		
-	<div class="layout"  data-role="page" id="pageone">
-			<div id="freewall" class="free-wall">
-				<div class="item size21 level1">
-					<div class="padding">
-						<h2>Auto Planer</h2>
-						<div>Free app for drivers on the highways. <br> Panayiotis Papadopoulos</div>
-					</div>	
-				</div>
-				
-				<div class="size22 level1" data-fixSize=0 data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
-					<div class="item size11"><i class="img-demo1"></i></div>
-					<div class="item size11"><i class="img-demo2"></i></div>
-					<div class="item size11"><i class="img-demo3"></i></div>
-					<div class="item size11"><i class="img-demo4"></i></div>
-					<div class="item size11"><i class="img-demo5"></i></div>
-					<div class="item size11"><i class="img-demo6"></i></div>
-				</div>
-
-				<div class="item size21 level1"><i class="layout-demo1"></i></div>
-				
-				<div class="item size21 level1"><i class="layout-demo2"></i></div>
-
-				<div class="item size21 level1 desktop-box">
-					<div class="wallpaper">
-						<div class="text-bottom">
-							<h1><a href="#pagetwo">η θέση μου</a></h1>
-						</div>
-					</div>
-				</div>
-				
-				<div class="size22 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
-					<div class="item size11"><i class="icon-user icon-4x"></i></div>
-					
-					<div class="size11" data-fixSize=0 data-nested=".size2-2" data-cellW=70 data-cellH=70 >
-						<div class="item size2-2"><i class="icon-facebook icon-2x"></i></div>
-						<div class="item size2-2"><i class="icon-twitter icon-2x"></i></div>
-						<div class="item size2-2"><i class="icon-linkedin icon-2x"></i></div>
-						<div class="item size2-2"><i class="icon-google-plus icon-2x"></i></div>
-					</div>
-					
-					<div class="item size11"><i class="icon-coffee icon-4x"></i></div>
-					
-					<div class="item size11"><i class="icon-comments icon-4x"></i></div>
-
-					<div class="item size11"><i class="icon-headphones icon-4x"></i></div>
-					
-					<div class="item size11"><i class="icon-facetime-video icon-4x"></i></div>
-
-				</div>
-
-				<div class="item size21 level1"><i class="layout-demo3"></i></div>
-
-				<div class="item size22 level1"><div class="map"></div></div>
-
-				<div class="item size21 level1"><div class="freewall"></div></div>
-				
-				<div class="size22 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10 >
-					<div class="item size11"><i class="icon-user icon-4x"></i></div>
-					
-					<div class="item size11"><i class="icon-coffee icon-4x"></i></div>
-					
-					<div class="size11" data-fixSize=0 data-nested=".size2-2" data-cellW=70 data-cellH=70 >
-						<div class="item size2-2"><i class="img-demo7"></i></div>
-						<div class="item size2-2"><i class="img-demo9"></i></div>
-						<div class="item size2-2"><i class="img-demo10"></i></div>
-						<div class="item size2-2"><i class="img-demo8"></i></div>
-						<div class="item size2-2"><i class="img-demo11"></i></div>
-						<div class="item size2-2"><i class="img-demo12"></i></div>
-					</div>
-					
-					<div class="item size11"><i class="icon-comments icon-4x"></i></div>
-				</div>
-
-				<div class="item size21 level1"><i class="layout-demo5"></i></div>
-				
-				<div class="size21 level1" data-nested=".size11" data-cellW=150 data-cellH=150 data-gutterX=10>
-					<div class="item size11"><i class="icon-calendar icon-4x"></i></div>
-					<div class="item size11"><i class="icon-windows icon-4x"></i></div>
-				</div>
-
-				<div class="item size21 level1"><i class="layout-demo6"></i></div>
-				
-			</div> <!-- freewall -->
-		</div> <!-- layout -->
-	
-	<script type="text/javascript">
-			
-			var colour = [
-				"rgb(142, 68, 173)",
-				"rgb(243, 156, 18)",
-				"rgb(211, 84, 0)",
-				"rgb(0, 106, 63)",
-				"rgb(41, 128, 185)",
-				"rgb(192, 57, 43)",
-				"rgb(135, 0, 0)",
-				"rgb(39, 174, 96)"
-			];
-			
-			$(".free-wall .item").each(function() {
-				var backgroundColor = colour[colour.length * Math.random() << 0];
-				$(this).css({
-					backgroundColor: backgroundColor
-				});
-			});
-
-			$(function() {
-				var wall = new freewall("#freewall");
-				wall.reset({
-					selector: '.level1',
-					cellW: 320,
-					cellH: 160,
-					fixSize: 0,
-					gutterX: 20,
-					gutterY: 10,
-					onResize: function() {
-						wall.fitZone();
-					}
-				});
-				wall.fitZone();
-				$(window).trigger("resize");
-			});
-
-		</script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!--
-	<div  data-role="page" id="pageone">
+<body class="cbp-spmenu-push">
+	<nav  class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="cbp-spmenu-s4">
+			<h3><img id="showBottom2" src="images\menu.png" alt="Menu" style="width: 1.5em;float: right; cursor: pointer;"></h3>
+			<a href="#">Βοηθεια από εδω</a>
+			<a href="#">Σημεια Εξυπηρετησης</a>
+			<a href="#">Προετοιμασια Ταξιδιου</a>
+			<a href="#">Συμβαντα</a>
+			<a href="#pagetraffic" onclick="ToogleMenu();">Κινηση</a>
+			<a href="#">Στοιχεια Θεσης μου</a>
+			<a href="#pagetwo" onclick="ToogleMenu();">η θέση μου</a>
+		</nav>
+	<div  data-role="page" id="pageone" class="wrapper equal">
 	<h1><img id="showBottom" src="images\menu.png" alt="Menu" style="width: 1.5em;float: right; cursor: pointer;">Auto Planer</h1>
 	<h5>Panayiotis Papadopoulos</h5>
 	
 	<div class="twelve"></div>
-			
+			<h3 class="desktop-only">Desktop Screens (.desktop-only)</h3>
+			<h3 class="tablet-only">Tablet Screens (.tablet-only)</h3>
+			<h3 class="mobile-only">Mobile Screens (.mobile-only)</h3>
 				<article class="six">
 					<div id="locationarea" class="inner" title="βοήθεια από την θέση μου">
 						<img  src="images\location.png" alt="alert" style="width: 2.5em;float: right; cursor: pointer;">
@@ -282,7 +152,7 @@
 			</div>
 		</div>
 	</div>
-	-->
+	
 	<div data-role="page" id="pagetwo">
 	  <div data-role="header">
 	  	<a href="#pageone" style="float: left;">Επιστροφη στην αρχη</a>
@@ -325,10 +195,41 @@
 	    <h1>Auto Planer 2015</h1>
 	  </div>
 	</div>
+	<!--<script src="flexgrid.javascript.js"></script>-->
 	<script src="src/jQueryHelper.js"></script>
+	<script src="js/classie.js"></script>
 	<script src="http://js.arcgis.com/3.13/"></script>
 	<script>
 		
+		$("#card").flip();
+		 		
+		//http://tympanus.net/Development/OffCanvasMenuEffects/wave.html
+			var menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
+				body = document.body;
+
+			
+			showBottom.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( menuBottom, 'cbp-spmenu-open' );
+				
+			};
+			showBottom2.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( menuBottom, 'cbp-spmenu-open' );
+				
+			};
+			
+			trafficarea.onclick = function() {
+				$.mobile.changePage('#pagetraffic');
+				
+			};
+			
+			function ToogleMenu(){
+				
+				setTimeout(function(){
+						 classie.toggle( menuBottom, 'cbp-spmenu-open' );
+						 }, 1000);
+			}
 
 function getLocation() {
 	var x = document.getElementById("demo");
