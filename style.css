@@ -668,82 +668,88 @@ html,body {
 			
 
 
-
-
-
-
-.meny {
-	display: none;
-	padding: 20px;
-	overflow: auto;
-	background: #333;
-	color: #eee;
-
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
+#navbar {
+  max-width: 1000px;
+  margin: 0 auto;
 }
-	.meny ul {
-		margin-top: 10px;
-	}
-		.meny ul li {
-			display: inline-block;
-			width: 200px;
-			list-style: none;
-			font-size: 20px;
-			padding: 3px 10px;
-		}
-			.meny ul li:before {
-				content: '-';
-				margin-right: 5px;
-				color: rgba( 255, 255, 255, 0.2 );
-			}
-
-/**
- * Hint graphic that appears while menu is inactive
- */
-.meny-arrow {
-	position: absolute;
-	z-index: 10;
-
-	border: 10px solid transparent;
-
-	-webkit-transition: opacity 0.4s ease 0.4s;
-	   -moz-transition: opacity 0.4s ease 0.4s;
-	    -ms-transition: opacity 0.4s ease 0.4s;
-	     -o-transition: opacity 0.4s ease 0.4s;
-	        transition: opacity 0.4s ease 0.4s;
+ 
+.menubtn {
+  /* needs positioning for z-index http://stackoverflow.com/a/10600930/477958 */
+  position: relative; 
+  z-index: 2000;
+  color: #274a61;
+  text-decoration: none;
+  font-size: 0em;
+  line-height: 0em;
+  top: -22px;
+  padding: 15px;
+  background-image: url('hamburger.png');
+  background-position: 50% 50%;
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
 }
-	.meny-left .meny-arrow {
-		left: 14px;
-		top: 50%;
-		margin-top: -16px;
-		border-left: 16px solid #333;
-	}
-	.meny-right .meny-arrow {
-		right: 14px;
-		top: 50%;
-		margin-top: -16px;
-		border-right: 16px solid #333;
-	}
-	.meny-top .meny-arrow {
-		left: 50%;
-		top: 14px;
-		margin-left: -16px;
-		border-top: 16px solid #333;
-	}
-	.meny-bottom .meny-arrow {
-		left: 50%;
-		bottom: 14px;
-		margin-left: -16px;
-		border-bottom: 16px solid #333;
-	}
-	.meny-active .meny-arrow {
-		opacity: 0;
+.menubtn:hover, .openmenu .menubtn {
+  color: #bdd43e;
+  background-image: url('hamburger-active.png');
+}
 
-		-webkit-transition: opacity 0.2s ease;
-		   -moz-transition: opacity 0.2s ease;
-		    -ms-transition: opacity 0.2s ease;
-		     -o-transition: opacity 0.2s ease;
-		        transition: opacity 0.2s ease;
-	}
+/** toggle menu **/
+body.openmenu {
+  position: fixed;
+  overflow: hidden;
+}
+ 
+#pgcontainer {
+  padding: 45px 0;
+  margin: 0;
+}
+ 
+.overlay {
+  position: fixed;
+  z-index: 99;
+  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+ 
+.openmenu .overlay {
+  top: 0;
+}
+
+#hamburgermenu {
+  height: 100%;
+  width: 0;
+  background: #373737;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  overflow: hidden;
+  -webkit-box-shadow: 3px 0 7px rgba(0,0,0,0.55);
+  -moz-box-shadow: 3px 0 7px rgba(0,0,0,0.55);
+  box-shadow: 3px 0 7px rgba(0,0,0,0.55);
+}
+#hamburgermenu ul {
+  margin-top: 45px;
+  z-index: 101;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#hamburgermenu ul li {
+  display: block;
+}
+#hamburgermenu ul li a {
+  display: block;
+  min-width: 130px;
+  padding: 18px 8px;
+  color: #cdcdcd;
+  font-size: 1.45em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+#hamburgermenu li a:hover {
+  color: #fff;
+  background: #2c2c2c;
+}
